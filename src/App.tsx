@@ -1,11 +1,15 @@
 import { Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar/NavBar";
+import Movies from "./pages/Movies";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div>
+      <NavBar/>
       <Routes>
-        <Route path="/" element />
-        <Route path="/movies" element />
+        <Route path="/" element={<Home />}/>
+        <Route path="/movies" element={<Movies/>} />
         <Route path="/tv" element />
         <Route path="/movies/:id" element />
         <Route path="/tv/:id" element />
