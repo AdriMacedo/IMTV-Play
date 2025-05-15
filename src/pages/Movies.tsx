@@ -5,8 +5,8 @@ import {
   getTopRatedMovies,
   getUpComingMovies,
 } from "../services/api";
-import { type Movie } from "../services/api";
 import { Link } from "react-router-dom";
+import type { Movie } from "../types/interfaces";
 
 function Movies() {
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
