@@ -34,3 +34,15 @@ export interface CrewMember {
   name: string;
   job: string;
 }
+
+export interface TV {
+  id: number;
+  name: string;
+  poster_path: string;
+  backdrop_path: string;
+  first_air_date: string;
+  vote_average: number;
+  number_of_seasons: number;
+  genres: Genre[];
+  overview: string;
+}

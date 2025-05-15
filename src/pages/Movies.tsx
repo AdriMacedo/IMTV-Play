@@ -37,7 +37,7 @@ function Movies() {
   }, []);
 
   if (loading) {
-    return <p> Carregando Filmes...</p>;
+    return <p> Loading...</p>;
   }
   const getPosterUrl = (posterPath: string) => {
     return `https://image.tmdb.org/t/p/w500${posterPath}`;

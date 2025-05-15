@@ -4,7 +4,6 @@ import {
   getMovieDetails,
   getMovieCredits,
   getMoviesByGenres,
-  
 } from "../services/api";
 import type { CastMember, CrewMember, Movie } from "../types/interfaces";
 import { Link } from "react-router-dom";
@@ -26,19 +25,16 @@ function MovieDetails() {
       try {
         const details = await getMovieDetails(id);
         const credits = await getMovieCredits(id);
-        
 
         setMovieDetails(details);
         setCast(credits.cast);
         setCrew(credits.crew);
-        
-const genreIds = details.genres.map((genre)=> genre.id);
-if(genreIds.length > 0) {
-    const relatedMovies = await getMoviesByGenres(genreIds);
-    setRelatedMovies(relatedMovies.results);
-}
 
-
+        const genreIds = details.genres.map((genre) => genre.id);
+        if (genreIds.length > 0) {
+          const relatedMovies = await getMoviesByGenres(genreIds);
+          setRelatedMovies(relatedMovies.results);
+        }
       } catch (error) {
         console.log("Erro ao carregar detalhes do filme", error);
       } finally {
@@ -48,13 +44,13 @@ if(genreIds.length > 0) {
     fetchMoviedetails();
   }, [id]);
 
-  if (loading) return <p>Carregando detalhes...</p>;
-  if (!movieDetails) return <p>Filme não encontrado.</p>;
+  if (loading) return <p>Loading...</p>;
+  if (!movieDetails) return <p>Movie not found.</p>;
 
   const releaseDate = (releaseDate: string) => releaseDate.slice(0, 4);
 
   const runtime = (runtime: number | null) => {
-    if (!runtime) return "Duração desconhecida";
+    if (!runtime) return "Duration unknown";
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
     return `${hours}h${minutes}m`;
@@ -130,21 +126,22 @@ if(genreIds.length > 0) {
         <h2>MORE LIKE THIS</h2>
         <div>
           {relatedMovies.length > 0 ? (
-          relatedMovies.map((movie) => (
-            <Link to={`/movie/${movie.id}`} key={movie.id}>
-              {movie.poster_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                  alt={movie.title}
-                />
-              ) : (
-                <div>NO IMAGE</div>
-              )}
-            </Link>
-          ))): (
+            relatedMovies.map((movie) => (
+              <Link to={`/movie/${movie.id}`} key={movie.id}>
+                {movie.poster_path ? (
+                  <img
+                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                ) : (
+                  <div>NO IMAGE</div>
+                )}
+              </Link>
+            ))
+          ) : (
             <p>No Related Movies Found</p>
-          )};
-          
+          )}
+          ;
         </div>
       </div>
     </div>

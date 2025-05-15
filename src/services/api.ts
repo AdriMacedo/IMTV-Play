@@ -77,3 +77,8 @@ export const getMoviesByGenres = async (genreIds: number[]) => {
   const genre = genreIds.join(" ");
   return fetchData(`discover/movie?with_genres=${genre}&language=en-US&page=1`);
 };
+
+export const getTvByGenres = async (genreIds: number[]) => {
+  const genre = genreIds.join(" ");
+  return fetchData(`discover/tv?with_genres=${genre}&language=en-US&page=1`);
+};
