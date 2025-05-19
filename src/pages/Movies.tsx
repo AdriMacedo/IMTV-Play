@@ -5,8 +5,8 @@ import {
   getTopRatedMovies,
   getUpComingMovies,
 } from "../services/api";
-import { Link } from "react-router-dom";
 import type { Movie } from "../types/interfaces";
+import MovieSection from "../components/Movie/MovieSection";
 
 function Movies() {
   const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
@@ -39,84 +39,12 @@ function Movies() {
   if (loading) {
     return <p> Loading...</p>;
   }
-  const getPosterUrl = (posterPath: string) => {
-    return `https://image.tmdb.org/t/p/w500${posterPath}`;
-  };
-
-  const renderStars = (voteAverage: number) => {
-    const stars = voteAverage ? Math.round(voteAverage / 2) : 0;
-
-    const filledStars = "★".repeat(stars);
-    const emptyStars = "☆".repeat(5 - stars);
-
-    return filledStars + emptyStars;
-  };
-
   return (
     <div>
-      <h2>POPULAR MOVIES</h2>
-      <ul>
-        {popularMovies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>
-              {movie.poster_path && (
-                <img src={getPosterUrl(movie.poster_path)} alt={movie.title} />
-              )}
-            </Link>
-            <h3>{movie.title}</h3>
-            <p>{movie.release_date.slice(0, 4)}</p>
-            <p>{renderStars(movie.vote_average)}</p>
-          </li>
-        ))}
-      </ul>
-
-      <h2>TOP RATED</h2>
-      <ul>
-        {topRatedMovies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>
-              {movie.poster_path && (
-                <img src={getPosterUrl(movie.poster_path)} alt={movie.title} />
-              )}
-            </Link>
-            <h3>{movie.title}</h3>
-            <p>{movie.release_date.slice(0, 4)}</p>
-            <p>{renderStars(movie.vote_average)}</p>
-          </li>
-        ))}
-      </ul>
-
-      <h2>NOW PLAYING</h2>
-      <ul>
-        {nowplayingMovies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>
-              {movie.poster_path && (
-                <img src={getPosterUrl(movie.poster_path)} alt={movie.title} />
-              )}
-            </Link>
-            <h3>{movie.title}</h3>
-            <p>{movie.release_date.slice(0, 4)}</p>
-            <p>{renderStars(movie.vote_average)}</p>
-          </li>
-        ))}
-      </ul>
-
-      <h2>UP COMING</h2>
-      <ul>
-        {upcomingMovies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movie/${movie.id}`}>
-              {movie.poster_path && (
-                <img src={getPosterUrl(movie.poster_path)} alt={movie.title} />
-              )}
-            </Link>
-            <h3>{movie.title}</h3>
-            <p>{movie.release_date.slice(0, 4)}</p>
-            <p>{renderStars(movie.vote_average)}</p>
-          </li>
-        ))}
-      </ul>
+      <MovieSection title={"POPULAR MOVIES"} movies={popularMovies} />
+      <MovieSection title={"TOP RATED"} movies={nowplayingMovies} />
+      <MovieSection title={"NOW PLAYING"} movies={topRatedMovies} />
+      <MovieSection title={"UP COMING"} movies={upcomingMovies} />
     </div>
   );
 }

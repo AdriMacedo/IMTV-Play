@@ -3,8 +3,8 @@ import NavBar from "./components/NavBar/NavBar";
 import Movies from "./pages/Movies";
 import Home from "./pages/Home";
 import MovieDetails from "./pages/MovieDetails";
-import Tv from "./pages/Tv";
 import TvDetails from "./pages/TvDetails";
+import Tv from "./pages/Tv";
 
 function App() {
   return (

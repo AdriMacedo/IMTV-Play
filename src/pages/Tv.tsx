@@ -5,8 +5,8 @@ import {
   getPopularTV,
   getTopRatedTV,
 } from "../services/api";
-import { Link } from "react-router-dom";
 import type { TV } from "../types/interfaces";
+import TVSection from "../components/TV/TVSection";
 
 function Tv() {
   const [popularTv, setPopularTv] = useState<TV[]>([]);
@@ -39,84 +39,12 @@ function Tv() {
   if (loading) {
     return <p>Loading...</p>;
   }
-  const getPosterUrl = (posterPath: string) => {
-    return `https://image.tmdb.org/t/p/w500${posterPath}`;
-  };
-
-  const renderStars = (voteAverage: number) => {
-    const stars = voteAverage ? Math.round(voteAverage / 2) : 0;
-
-    const filledStars = "★".repeat(stars);
-    const emptyStars = "☆".repeat(5 - stars);
-
-    return filledStars + emptyStars;
-  };
-
   return (
     <div>
-      <h2>POPULAR</h2>
-      <ul>
-        {popularTv.map((tv) => (
-          <li key={tv.id}>
-            <Link to={`/tv/${tv.id}`}>
-              {tv.poster_path && (
-                <img src={getPosterUrl(tv.poster_path)} alt={tv.name} />
-              )}
-            </Link>
-            <h3>{tv.name}</h3>
-            <p>{tv.first_air_date.slice(0, 4)}</p>
-            <p>{renderStars(tv.vote_average)}</p>
-          </li>
-        ))}
-      </ul>
-
-      <h2>TOP RATED</h2>
-      <ul>
-        {topRatedTv.map((tv) => (
-          <li key={tv.id}>
-            <Link to={`/tv/${tv.id}`}>
-              {tv.poster_path && (
-                <img src={getPosterUrl(tv.poster_path)} alt={tv.name} />
-              )}
-            </Link>
-            <h3>{tv.name}</h3>
-            <p>{tv.first_air_date.slice(0, 4)}</p>
-            <p>{renderStars(tv.vote_average)}</p>
-          </li>
-        ))}
-      </ul>
-
-      <h2>ON THE AIR</h2>
-      <ul>
-        {onTheAirTv.map((tv) => (
-          <li key={tv.id}>
-            <Link to={`/tv/${tv.id}`}>
-              {tv.poster_path && (
-                <img src={getPosterUrl(tv.poster_path)} alt={tv.name} />
-              )}
-            </Link>
-            <h3>{tv.name}</h3>
-            <p>{tv.first_air_date.slice(0, 4)}</p>
-            <p>{renderStars(tv.vote_average)}</p>
-          </li>
-        ))}
-      </ul>
-
-      <h2>AIRING TODAY</h2>
-      <ul>
-        {airingToday.map((tv) => (
-          <li key={tv.id}>
-            <Link to={`/tv/${tv.id}`}>
-              {tv.poster_path && (
-                <img src={getPosterUrl(tv.poster_path)} alt={tv.name} />
-              )}
-            </Link>
-            <h3>{tv.name}</h3>
-            <p>{tv.first_air_date.slice(0, 4)}</p>
-            <p>{renderStars(tv.vote_average)}</p>
-          </li>
-        ))}
-      </ul>
+      <TVSection title={"POPULAR"} tv={popularTv} />
+      <TVSection title={"TOP RATED"} tv={topRatedTv} />
+      <TVSection title={"ON THE AIR"} tv={onTheAirTv} />
+      <TVSection title={"AIRING TODAY"} tv={airingToday} />
     </div>
   );
 }

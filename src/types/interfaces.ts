@@ -3,16 +3,20 @@ export interface Genre {
   name: string;
 }
 
-export interface Movie {
+export interface Media {
   id: number;
-  title: string;
   poster_path: string;
   backdrop_path: string;
-  release_date: string;
   vote_average: number;
-  runtime: number;
+
   genres: Genre[];
   overview: string;
+}
+
+export interface Movie extends Media{
+  title: string;
+  release_date: string;
+  runtime: number;
 }
 
 export interface MovieList {
@@ -35,14 +39,8 @@ export interface CrewMember {
   job: string;
 }
 
-export interface TV {
-  id: number;
+export interface TV extends Media {
   name: string;
-  poster_path: string;
-  backdrop_path: string;
   first_air_date: string;
-  vote_average: number;
   number_of_seasons: number;
-  genres: Genre[];
-  overview: string;
 }

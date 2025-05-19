@@ -5,8 +5,11 @@ import {
   getMovieCredits,
   getMoviesByGenres,
 } from "../services/api";
-import type { CastMember, CrewMember, Movie } from "../types/interfaces";
-import { Link } from "react-router-dom";
+import type { CastMember, CrewMember, Genre, Movie } from "../types/interfaces";
+import CastList from "../components/Details/CastList";
+import CrewList from "../components/Details/CrewList";
+import SimilarList from "../components/Details/SimilarList";
+import Overview from "../components/Details/Overview";
 
 function MovieDetails() {
   const { id } = useParams<{ id: string }>();
@@ -30,7 +33,7 @@ function MovieDetails() {
         setCast(credits.cast);
         setCrew(credits.crew);
 
-        const genreIds = details.genres.map((genre) => genre.id);
+        const genreIds = details.genres.map((genre: Genre) => genre.id);
         if (genreIds.length > 0) {
           const relatedMovies = await getMoviesByGenres(genreIds);
           setRelatedMovies(relatedMovies.results);
@@ -86,63 +89,13 @@ function MovieDetails() {
           <p>{releaseDate(movieDetails.release_date)}</p>
           <p>{runtime(movieDetails.runtime)}</p>
           <p>{movieDetails.genres.map((genre) => genre.name).join(" ")}</p>
-          <p>{movieDetails.overview}</p>
         </div>
       </div>
-
       <div>
-        <h2>CAST</h2>
-        <div>
-          {cast.map((actor, index) => (
-            <div key={`${actor.id}-${index}`}>
-              {actor.profile_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
-                  alt={actor.name}
-                />
-              ) : (
-                <div> NO IMAGE </div> // colocar aqui uma imagem vazia
-              )}
-              <p>{actor.name}</p>
-              <p>{actor.character}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <h2>CREW</h2>
-        <div>
-          {crew.map((member, index) => (
-            <div key={`${member.id}-${index}`}>
-              <p>{member.name}</p>
-              <p>{member.job}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <h2>MORE LIKE THIS</h2>
-        <div>
-          {relatedMovies.length > 0 ? (
-            relatedMovies.map((movie) => (
-              <Link to={`/movie/${movie.id}`} key={movie.id}>
-                {movie.poster_path ? (
-                  <img
-                    src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                ) : (
-                  <div>NO IMAGE</div>
-                )}
-              </Link>
-            ))
-          ) : (
-            <p>No Related Movies Found</p>
-          )}
-          ;
-        </div>
+        <Overview overview={movieDetails.overview} />
+        <CastList cast={cast} />
+        <CrewList crew={crew} />
+        <SimilarList items={relatedMovies} type={"movie"} />
       </div>
     </div>
   );
