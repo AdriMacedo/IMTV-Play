@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import type { Movie, TV } from "../../types/interfaces";
+import { poster } from "../../utils/imagePath";
 
 interface SimilarListProps {
   items: (Movie | TV)[];
@@ -14,14 +15,10 @@ function SimilarList({ items, type }: SimilarListProps) {
         {items.length > 0 ? (
           items.map((media) => (
             <Link to={`/${type}/${media.id}`} key={media.id}>
-              {media.poster_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${media.poster_path}`}
-                  alt={"title" in media ? media.title : media.name}
-                />
-              ) : (
-                <div>NO IMAGE</div>
-              )}
+              <img
+                src={media.poster_path ? `${poster}${media.poster_path}` : ""}
+                alt={"title" in media ? media.title : media.name}
+              />
             </Link>
           ))
         ) : (

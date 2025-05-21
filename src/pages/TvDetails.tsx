@@ -1,12 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMoviesByGenres, getTVDetails, getTVCredits } from "../services/api";
-import type { CastMember, CrewMember, TV } from "../types/interfaces";
+import {
+  getMoviesByGenres,
+  getTVDetails,
+  getTVCredits,
+  getTVImages,
+} from "../services/api";
+import type {
+  CastMember,
+  CrewMember,
+  MovieImages,
+  TV,
+} from "../types/interfaces";
 import CastList from "../components/Details/CastList";
 import CrewList from "../components/Details/CrewList";
 import SimilarList from "../components/Details/SimilarList";
 import Overview from "../components/Details/Overview";
+import { originalImage, poster } from "../utils/imagePath";
 
 function TvDetails() {
   const { id } = useParams<{ id: string }>();
@@ -15,6 +26,7 @@ function TvDetails() {
   const [crew, setCrew] = useState<CrewMember[]>([]);
   const [loading, setLoading] = useState(true);
   const [relatedTVShows, setRelatedTVShows] = useState<TV[]>([]);
+  const [tvImages, setTvImages] = useState<MovieImages | null>(null);
 
   useEffect(() => {
     const fetchTvDetails = async () => {
@@ -25,10 +37,12 @@ function TvDetails() {
       try {
         const details = await getTVDetails(id);
         const credits = await getTVCredits(id);
+        const images = await getTVImages(id);
 
         setTvDetails(details);
         setCast(credits.cast);
         setCrew(credits.crew);
+        setTvImages(images);
 
         const genreIds = details.genres.map((genre: { id: any }) => genre.id);
         if (genreIds.length > 0) {
@@ -54,25 +68,28 @@ function TvDetails() {
     return `⭐ ${voteAverage.toFixed(1)}/10`;
   };
 
+  const backdropImage = tvImages?.backdrops.find((image) => image.file_path);
+  const posterImage = tvImages?.posters.find((image) => image.file_path);
+
+  const backdropURL = tvDetails?.backdrop_path
+    ? `${originalImage}${tvDetails.backdrop_path}`
+    : backdropImage
+    ? `${originalImage}${backdropImage.file_path}`
+    : null;
+
+  const posterURL = tvDetails?.poster_path
+    ? `${poster}${tvDetails.poster_path}`
+    : posterImage
+    ? `${poster}${posterImage.file_path}`
+    : null;
+
   return (
     <div>
-      {tvDetails.backdrop_path ? (
-        <img
-          src={`https://image.tmdb.org/t/p/w1280${tvDetails.backdrop_path}`}
-          alt={tvDetails.name}
-        />
-      ) : (
-        <div>NO IMAGE</div>
-      )}
+      <img src={backdropURL || ""} alt={tvDetails.name} />
+
       <div>
-        {tvDetails.poster_path ? (
-          <img
-            src={`https://image.tmdb.org/t/p/w500${tvDetails.poster_path}`}
-            alt={tvDetails.name}
-          />
-        ) : (
-          <div>NO IMAGE</div>
-        )}
+        <img src={posterURL || ""} alt={tvDetails.name} />
+
         <div>
           <h1>{tvDetails.name}</h1>
           <p>{voteAverage(tvDetails.vote_average)}</p>

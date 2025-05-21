@@ -1,3 +1,4 @@
+
 export interface Genre {
   id: number;
   name: string;
@@ -43,4 +44,10 @@ export interface TV extends Media {
   name: string;
   first_air_date: string;
   number_of_seasons: number;
+}
+
+
+export interface MovieImages {
+  backdrops : {file_path: string} [];
+  posters: {file_path: string} [];
 }

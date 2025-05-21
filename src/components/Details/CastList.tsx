@@ -1,4 +1,5 @@
 import type { CastMember } from "../../types/interfaces";
+import { profile } from "../../utils/imagePath";
 
 interface CastListProps {
   cast: CastMember[];
@@ -9,20 +10,22 @@ function CastList({ cast }: CastListProps) {
     <div>
       <h2>CAST</h2>
       <div>
-        {cast.map((actor) => (
-          <div key={actor.id}>
-            {actor.profile_path ? (
+        {cast.length > 0 ? (
+          cast.map((actor) => (
+            <div key={actor.id}>
               <img
-                src={`https://image.tmdb.org/t/p/w200${actor.profile_path}`}
+                src={
+                  actor.profile_path ? `${profile}${actor.profile_path}` : ""
+                }
                 alt={actor.name}
               />
-            ) : (
-              <div> NO IMAGE </div> // colocar aqui uma imagem vazia
-            )}
-            <p>{actor.name}</p>
-            <p>{actor.character}</p>
-          </div>
-        ))}
+              <p>{actor.name}</p>
+              <p>{actor.character}</p>
+            </div>
+          ))
+        ) : (
+          <p>No cast information available</p>
+        )}
       </div>
     </div>
   );
