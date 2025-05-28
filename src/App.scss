@@ -1,0 +1,16 @@
+@use "./assets/styles/variables" as *;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: $font-family;
+    font-weight: $font-weight-regular;
+    color: $color-white;
+    background: $bg-color;
+    padding-top: 60px;
+    
+}

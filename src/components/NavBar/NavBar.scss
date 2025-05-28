@@ -1,0 +1,26 @@
+@use "/src/assets/styles/variables" as *;
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px;
+    box-shadow: $box-shadow-navbar;
+    backdrop-filter: blur(4px);
+}
+
+.home {
+flex-shrink: 0;
+}
+
+.links {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 1;
+}

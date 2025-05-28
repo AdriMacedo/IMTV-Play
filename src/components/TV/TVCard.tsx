@@ -21,6 +21,7 @@ function TVCard({ tv }: TVCardProps) {
         <img src={`${poster}${tv.poster_path || ""}`} alt={tv.name} />
       </Link>
       <h3>{tv.name}</h3>
+      <p>{tv.first_air_date.slice(0, 4)}</p>
       <p>{renderStars(tv.vote_average)}</p>
     </li>
   );

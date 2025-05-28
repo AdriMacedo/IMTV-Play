@@ -4,17 +4,18 @@ import MovieCard from "./MovieCard";
 interface MovieSectionProps {
   title: string;
   movies: Movie[];
+  className: "grid" | "scroll";
 }
 
-function MovieSection({ title, movies }: MovieSectionProps) {
+function MovieSection({ title, movies , className}: MovieSectionProps) {
   return (
-    <section>
+    <section className="">
       <h2>{title}</h2>
-      <ul>
+      <div className={className}>
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

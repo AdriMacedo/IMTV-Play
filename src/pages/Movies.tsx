@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../assets/styles/_common.scss";
 import {
   getNowPlayingMovies,
   getPopularMovies,
@@ -40,11 +41,11 @@ function Movies() {
     return <p> Loading...</p>;
   }
   return (
-    <div>
-      <MovieSection title={"POPULAR MOVIES"} movies={popularMovies} />
-      <MovieSection title={"TOP RATED"} movies={nowplayingMovies} />
-      <MovieSection title={"NOW PLAYING"} movies={topRatedMovies} />
-      <MovieSection title={"UP COMING"} movies={upcomingMovies} />
+    <div className="main-content">
+      <MovieSection title={"POPULAR MOVIES"} movies={popularMovies} className={"grid"} />
+      <MovieSection title={"TOP RATED"} movies={nowplayingMovies} className={"scroll"} />
+      <MovieSection title={"NOW PLAYING"} movies={topRatedMovies} className={"scroll"} />
+      <MovieSection title={"UP COMING"} movies={upcomingMovies} className={"scroll"} />
     </div>
   );
 }
