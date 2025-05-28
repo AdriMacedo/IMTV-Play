@@ -1,0 +1,24 @@
+.movie-section {
+  margin: 0 40px;
+  padding-bottom: 20px;
+}
+.movie-section .movie-section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  letter-spacing: 2px;
+}
+.movie-section .movie-list.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.movie-section .movie-list.scroll {
+  display: flex;
+  scroll-snap-type: x mandatory;
+  gap: 20px;
+  padding: 0 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}/*# sourceMappingURL=MovieSection.css.map */

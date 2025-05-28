@@ -1,0 +1,29 @@
+@use "../../assets/styles/variables" as *;
+
+.movie-section {
+  margin: 0 40px;
+  padding-bottom: 20px;
+
+  .movie-section-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    margin-bottom: 1rem;
+    text-shadow: $text-shadow;
+    letter-spacing: 2px;
+  }
+  .movie-list {
+    &.grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    &.scroll {
+        display: flex;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 0 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+  }
+}

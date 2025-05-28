@@ -1,25 +1,26 @@
-@font-face {
-  font-family: "Futurama";
-  src: url("/src/assets/fonts/futurama_2/Futurama\ thin\ 30.ttf") format("truetype");
-  font-weight: 200;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: "Futurama";
+//   src: url("/src/assets/fonts/futurama_2/Futurama\ thin\ 30.ttf") format("truetype");
+//   font-weight: 200;
+//   font-style: normal;
+// }
 
-@font-face {
-  font-family: "Futurama";
-  src: url("/src/assets/fonts/futurama_2/Futurama\ bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: "Futurama";
+//   src: url("/src/assets/fonts/futurama_2/Futurama\ bold.ttf") format("truetype");
+//   font-weight: 700;
+//   font-style: normal;
+// }
 
-@font-face {
-  font-family: "Futurama";
-  src: url("/src/assets/fonts/futurama_2/Futurama\ expanded.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
+// @font-face {
+//   font-family: "Futurama";
+//   src: url("/src/assets/fonts/futurama_2/Futurama\ expanded.ttf") format("truetype");
+//   font-weight: 400;
+//   font-style: normal;
+// }
 
-$font-family: "Futurama", sans-serif;
+$font-family: "Poppins", sans-serif;
+// ver outra font mais cool
 
 $font-size-sm: 0.875rem;
 $font-size-base: 1rem;
@@ -33,15 +34,17 @@ $color-white: #fff;
 $color-black: #000;
 $text-color: #03063e;
 $text-color-hover: #ecf0f1;
+$text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 
 $bg-color: linear-gradient(
-    to right,
-    #03063e,
-    #809eda,
-    #1e417d,
-    #1953e3,
-    #060506
-  );
+  to right,
+  #03063e,
+  #809eda,
+  #1e417d,
+  #1953e3,
+  #060506
+);
+$bg-card: rgba(255, 255, 255, 0.05);
 
 $primary-color: #03063e;
 $secondary-color: #1953e3;
@@ -51,6 +54,8 @@ $star-gold: gold;
 $star-gray: rgb(219, 219, 219);
 
 $box-shadow-hover: inset 0 0 10px rgba(0, 255, 255, 0.3),
-0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.3);
+  0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.3);
 
 $box-shadow-navbar: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+$box-shadow-card: 0 0 15px rgba(0, 255, 255, 0.3);

@@ -1,5 +1,6 @@
 import type { Movie } from "../../types/interfaces";
 import MovieCard from "./MovieCard";
+import "./MovieSection.scss";
 
 interface MovieSectionProps {
   title: string;
@@ -9,9 +10,9 @@ interface MovieSectionProps {
 
 function MovieSection({ title, movies , className}: MovieSectionProps) {
   return (
-    <section className="">
-      <h2>{title}</h2>
-      <div className={className}>
+    <section className="movie-section">
+      <h2 className="movie-section-title">{title}</h2>
+      <div className={`movie-list ${className}`}>
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

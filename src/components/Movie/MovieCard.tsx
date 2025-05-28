@@ -9,16 +9,16 @@ interface MovieCardProps {
 
 function MovieCard({ movie }: MovieCardProps) {
   return (
-    <div key={movie.id}>
-      <Link to={`/movie/${movie.id}`}>
+    <Link to={`/movie/${movie.id}`}>
+      <div key={movie.id} className="card">
         <img src={`${poster}${movie.poster_path || ""}`} alt={movie.title} />
-        <div>
-          <h3>{movie.title}</h3>
-          <p>{movie.release_date.slice(0, 4)}</p>
+        <h3 className="card-title">{movie.title}</h3>
+        <div className="footer-items">
+          <p className="release-date">{movie.release_date.slice(0, 4)}</p>
           <StarRating voteAverage={movie.vote_average} />
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
 

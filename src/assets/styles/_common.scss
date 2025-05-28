@@ -1,5 +1,85 @@
 @use "./variables" as *;
 
 .main-content {
-    margin-top: 3rem;
+  margin-top: 3rem;
+}
+
+a {
+  text-decoration: none;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  background-color: $bg-card;
+  min-width: 200px;
+  height: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 1rem;
+  overflow: hidden;
+  color: $text-color;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  transform-origin: center center;
+
+  &:hover {
+    box-shadow: $box-shadow-card;
+    transform: scale(1.05);
+    color: $text-color-hover;
+  }
+
+  img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+  }
+
+  .card-title {
+    flex-grow: 1;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    margin: 0.5rem 0 0;
+    text-align: center;
+  }
+  .footer-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    align-items: center;
+  }
+  .release-date {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    text-align: center;
+  }
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+.gold {
+  color: $star-gold;
+}
+.gray {
+  color: $star-gray;
+}
+.half-star {
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  overflow: hidden;
+  .gold {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+  }
+  .gray {
+    color: $star-gray;
+  }
 }

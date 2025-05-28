@@ -27,6 +27,8 @@ function NavBar() {
         </Link>
         </div>
       </div>
+      <div> Search </div> 
+      {/* criar componente */}
     </nav>
   );
 }
