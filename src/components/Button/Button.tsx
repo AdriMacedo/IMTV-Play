@@ -7,9 +7,9 @@ interface ButtonProps {
     active?: boolean;
 };
 
-function Button ({children, variant, active =false}: ButtonProps) {
+function Button ({children, variant, active = false}: ButtonProps) {
     return (
-        <button className={`btn ${variant} ${active}`}>{children}</button>
+        <button className={`btn ${variant} ${active ? "active" : ""}`}>{children}</button>
     );
 };
 

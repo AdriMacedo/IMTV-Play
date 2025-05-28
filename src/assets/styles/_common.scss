@@ -61,7 +61,7 @@ a {
 .stars {
   display: flex;
   gap: 2px;
-}
+
 .gold {
   color: $star-gold;
 }
@@ -83,3 +83,33 @@ a {
     color: $star-gray;
   }
 }
+}
+
+.media-section {
+    margin: 0 40px;
+    padding-bottom: 20px;
+  
+    .media-section-title {
+      font-size: $font-size-base;
+      font-weight: $font-weight-bold;
+      margin-bottom: 1rem;
+      text-shadow: $text-shadow;
+      letter-spacing: 2px;
+    }
+    .media-list {
+      &.grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+      }
+      &.scroll {
+          display: flex;
+          scroll-snap-type: x mandatory;
+          gap: 20px;
+          padding: 0 20px;
+          overflow-x: auto;
+          overflow-y: hidden;
+      }
+    }
+  }
+  

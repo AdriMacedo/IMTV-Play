@@ -47,7 +47,7 @@ export interface TV extends Media {
 }
 
 
-export interface MovieImages {
+export interface MediaImages {
   backdrops : {file_path: string} [];
   posters: {file_path: string} [];
 }

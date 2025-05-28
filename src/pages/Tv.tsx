@@ -40,11 +40,11 @@ function Tv() {
     return <p>Loading...</p>;
   }
   return (
-    <div>
-      <TVSection title={"POPULAR"} tv={popularTv} />
-      <TVSection title={"TOP RATED"} tv={topRatedTv} />
-      <TVSection title={"ON THE AIR"} tv={onTheAirTv} />
-      <TVSection title={"AIRING TODAY"} tv={airingToday} />
+    <div className="main-content">
+      <TVSection title={"POPULAR"} tv={popularTv} className={"grid"} />
+      <TVSection title={"TOP RATED"} tv={topRatedTv} className={"scroll"} />
+      <TVSection title={"ON THE AIR"} tv={onTheAirTv} className={"scroll"} />
+      <TVSection title={"AIRING TODAY"} tv={airingToday} className={"scroll"} />
     </div>
   );
 }

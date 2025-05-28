@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import type { Movie } from "../../types/interfaces";
 import { poster } from "../../utils/imagePath";
-import StarRating from "../StarRating";
+import StarRating from "../StarRating/StarRating";
+import "../../assets/styles/_common.scss"
 
 interface MovieCardProps {
   movie: Movie;

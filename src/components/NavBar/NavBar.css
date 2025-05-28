@@ -32,10 +32,7 @@
   flex-shrink: 1;
   min-width: 60px;
   z-index: 2;
-  transform: margin 0.3s ease;
-}
-.nav-link.movies {
-  z-index: 2;
+  transition: margin 0.3s ease;
 }
 .nav-link.tv {
   z-index: 3;

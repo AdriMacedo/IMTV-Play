@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  getMoviesByGenres,
+  getTvByGenres,
   getTVDetails,
   getTVCredits,
   getTVImages,
@@ -10,7 +10,8 @@ import {
 import type {
   CastMember,
   CrewMember,
-  MovieImages,
+  Genre,
+  MediaImages,
   TV,
 } from "../types/interfaces";
 import CastList from "../components/Details/CastList";
@@ -26,7 +27,7 @@ function TvDetails() {
   const [crew, setCrew] = useState<CrewMember[]>([]);
   const [loading, setLoading] = useState(true);
   const [relatedTVShows, setRelatedTVShows] = useState<TV[]>([]);
-  const [tvImages, setTvImages] = useState<MovieImages | null>(null);
+  const [tvImages, setTvImages] = useState<MediaImages | null>(null);
 
   useEffect(() => {
     const fetchTvDetails = async () => {
@@ -44,13 +45,13 @@ function TvDetails() {
         setCrew(credits.crew);
         setTvImages(images);
 
-        const genreIds = details.genres.map((genre: { id: any }) => genre.id);
+        const genreIds = details.genres.map((genre: Genre) => genre.id);
         if (genreIds.length > 0) {
-          const related = await getMoviesByGenres(genreIds);
+          const related = await getTvByGenres(genreIds);
           setRelatedTVShows(related.results);
         }
       } catch (error) {
-        console.log("Erro ao carregar detalhes do filme", error);
+        console.log("Erro ao carregar detalhes das series", error);
       } finally {
         setLoading(false);
       }

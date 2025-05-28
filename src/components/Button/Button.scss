@@ -1,35 +1,37 @@
 @use "../../assets/styles/variables" as *;
 
 .btn {
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: 20px;
-    text-decoration: none;
-    cursor: pointer;
-    text-align: center;
-    border: none;
-    letter-spacing: 2px;
-    font-size: $font-size-base;
-    width: auto;
-    color: $color-white;
-    transition: all 0.3s ease;
-    font-weight: $font-weight-bold;
-    &:hover {
-        transform: scale(1.05);
-        box-shadow: $box-shadow-hover;
-    }
-    &:focus{
-        outline: none;
-    }
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  letter-spacing: 2px;
+  font-size: $font-size-base;
+  width: auto;
+  color: $color-white;
+  transition: all 0.3s ease;
+  font-weight: $font-weight-bold;
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: $box-shadow-hover;
+  }
+  &:focus {
+    outline: none;
+  }
 
-    &.home {
-        background-color: $primary-color;
-    }
-    &.movies, &.tv {
-        background-color: $secondary-color;
-    }
-    &.active {
-        transform: scale(1.05);
-
-    }
+  &.home {
+    background-color: $primary-color;
+  }
+  &.movies,
+  &.tv {
+    background-color: $secondary-color;
+  }
+  &.active {
+    transform: scale(1.05);
+    box-shadow: $box-shadow-active;
+  }
 }

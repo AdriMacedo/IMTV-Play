@@ -56,6 +56,10 @@ $star-gray: rgb(219, 219, 219);
 $box-shadow-hover: inset 0 0 10px rgba(0, 255, 255, 0.3),
   0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.3);
 
+$box-shadow-active: inset 0 0 10px rgba(0, 255, 255, 0.6),
+0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5);
+
+
 $box-shadow-navbar: 0 4px 6px rgba(0, 0, 0, 0.2);
 
 $box-shadow-card: 0 0 15px rgba(0, 255, 255, 0.3);

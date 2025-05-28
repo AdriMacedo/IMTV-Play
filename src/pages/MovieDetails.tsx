@@ -11,7 +11,7 @@ import {
   type CrewMember,
   type Genre,
   type Movie,
-  type MovieImages,
+  type MediaImages,
 } from "../types/interfaces";
 import CastList from "../components/Details/CastList";
 import CrewList from "../components/Details/CrewList";
@@ -26,7 +26,7 @@ function MovieDetails() {
   const [crew, setCrew] = useState<CrewMember[]>([]);
   const [loading, setLoading] = useState(true);
   const [relatedMovies, setRelatedMovies] = useState<Movie[]>([]);
-  const [movieImages, setMovieImages] = useState<MovieImages | null>(null);
+  const [movieImages, setMovieImages] = useState<MediaImages | null>(null);
 
   useEffect(() => {
     const fetchMoviedetails = async () => {
