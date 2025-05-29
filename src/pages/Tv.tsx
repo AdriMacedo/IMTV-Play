@@ -13,7 +13,10 @@ function Tv() {
   const [topRatedTv, setTopRatedTv] = useState<TV[]>([]);
   const [onTheAirTv, setOnTheAirTv] = useState<TV[]>([]);
   const [airingToday, setAiringToday] = useState<TV[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingPopular, setLoadingPopular] = useState(true);
+  const [loadingTopRated, setLoadingTopRated] = useState(true);
+  const [loadingOnTheAir, setLoadingOnTheAir] = useState(true);
+  const [loadingAiringToday, setLoadingAiringToday] = useState(true);
 
   useEffect(() => {
     const fetchTv = async () => {
@@ -30,21 +33,21 @@ function Tv() {
       } catch (error) {
         console.log("Erro ao carregar tvshows:", error);
       } finally {
-        setLoading(false);
+        setLoadingPopular(false);
+        setLoadingTopRated(false);
+        setLoadingOnTheAir(false);
+        setLoadingAiringToday(false);
       }
     };
     fetchTv();
   }, []);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
   return (
     <div className="main-content">
-      <TVSection title={"POPULAR"} tv={popularTv} className={"grid"} />
-      <TVSection title={"TOP RATED"} tv={topRatedTv} className={"scroll"} />
-      <TVSection title={"ON THE AIR"} tv={onTheAirTv} className={"scroll"} />
-      <TVSection title={"AIRING TODAY"} tv={airingToday} className={"scroll"} />
+      <TVSection title={"POPULAR"} tv={popularTv} className={"grid"} loading={loadingPopular} />
+      <TVSection title={"TOP RATED"} tv={topRatedTv} className={"scroll"} loading={loadingTopRated} />
+      <TVSection title={"ON THE AIR"} tv={onTheAirTv} className={"scroll"} loading={loadingOnTheAir} />
+      <TVSection title={"AIRING TODAY"} tv={airingToday} className={"scroll"} loading={loadingAiringToday} />
     </div>
   );
 }

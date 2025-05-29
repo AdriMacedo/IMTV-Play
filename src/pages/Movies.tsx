@@ -14,7 +14,10 @@ function Movies() {
   const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
   const [nowplayingMovies, setNowPlayingMovies] = useState<Movie[]>([]);
   const [upcomingMovies, setUpcomingMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingPopular, setLoadingPopular] = useState(true);
+  const [loadingTopRated, setLoadingTopRated] = useState(true);
+  const [loadingNowPlaying, setLoadingNowPlaying] = useState(true);
+  const [loadingUpcoming, setLoadingUpcoming] = useState(true);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -31,21 +34,21 @@ function Movies() {
       } catch (error) {
         console.log("Erro ao carregar filmes:", error);
       } finally {
-        setLoading(false);
+        setLoadingPopular(false);
+        setLoadingTopRated(false);
+        setLoadingNowPlaying(false);
+        setLoadingUpcoming(false);
       }
     };
     fetchMovies();
   }, []);
 
-  if (loading) {
-    return <p> Loading...</p>;
-  }
   return (
     <div className="main-content">
-      <MovieSection title={"POPULAR MOVIES"} movies={popularMovies} className={"grid"} />
-      <MovieSection title={"TOP RATED"} movies={topRatedMovies} className={"scroll"} />
-      <MovieSection title={"NOW PLAYING"} movies={nowplayingMovies} className={"scroll"} />
-      <MovieSection title={"UP COMING"} movies={upcomingMovies} className={"scroll"} />
+      <MovieSection title={"POPULAR MOVIES"} movies={popularMovies} className={"grid"} loading={loadingPopular} />
+      <MovieSection title={"TOP RATED"} movies={topRatedMovies} className={"scroll"} loading={loadingTopRated} />
+      <MovieSection title={"NOW PLAYING"} movies={nowplayingMovies} className={"scroll"} loading={loadingNowPlaying} />
+      <MovieSection title={"UP COMING"} movies={upcomingMovies} className={"scroll"} loading={loadingUpcoming} />
     </div>
   );
 }
