@@ -65,12 +65,12 @@ export const getTVCredits = async (tvId: string) => {
   return fetchData(`tv/${tvId}/credits`);
 };
 
-export const getMovieImages = async (movieId:string) => {
-    return fetchData(`movie/${movieId}/images`);
+export const getMovieImages = async (movieId: string) => {
+  return fetchData(`movie/${movieId}/images`);
 };
 
-export const getTVImages = async (tvId:string) => {
-    return fetchData(`tv/${tvId}/images`);
+export const getTVImages = async (tvId: string) => {
+  return fetchData(`tv/${tvId}/images`);
 };
 
 export const getMoviesByGenres = async (genreIds: number[]) => {
@@ -78,7 +78,7 @@ export const getMoviesByGenres = async (genreIds: number[]) => {
   return fetchData(`discover/movie?with_genres=${genre}&language=en-US&page=1`);
 };
 
-export const getTvByGenres = async (genreIds: number[]) => {
+export const getTVByGenres = async (genreIds: number[]) => {
   const genre = genreIds.join(" ");
   return fetchData(`discover/tv?with_genres=${genre}&language=en-US&page=1`);
 };

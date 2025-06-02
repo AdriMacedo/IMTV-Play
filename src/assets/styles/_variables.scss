@@ -39,7 +39,7 @@ $text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 $bg-color: linear-gradient(
   to right,
   #03063e,
-  #809eda,
+  #1953e3,
   #1e417d,
   #1953e3,
   #060506
@@ -57,9 +57,10 @@ $box-shadow-hover: inset 0 0 10px rgba(0, 255, 255, 0.3),
   0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.3);
 
 $box-shadow-active: inset 0 0 10px rgba(0, 255, 255, 0.6),
-0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5);
-
+  0 0 20px rgba(0, 255, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.5);
 
 $box-shadow-navbar: 0 4px 6px rgba(0, 0, 0, 0.2);
 
 $box-shadow-card: 0 0 15px rgba(0, 255, 255, 0.3);
+
+$border-radius-image: 10px;

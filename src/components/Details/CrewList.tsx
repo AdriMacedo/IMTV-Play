@@ -1,18 +1,21 @@
 import type { CrewMember } from "../../types/interfaces";
+import "../../assets/styles/_common.scss";
 
 interface CrewListProps {
   crew: CrewMember[];
 }
 function CrewList({ crew }: CrewListProps) {
   return (
-    <div>
+    <div className="cast-section">
       <h2>CREW</h2>
-      <div>
+      <div className="cast-list">
         {crew.length > 0 ? (
           crew.map((member) => (
-            <div key={member.id}>
-              <p>{member.name}</p>
-              <p>{member.job}</p>
+            <div key={member.id} className="cast-card">
+              <div className="cast-info">
+                <h4 className="cast-name">{member.name}</h4>
+                <p className="cast-character">{member.job}</p>
+              </div>
             </div>
           ))
         ) : (

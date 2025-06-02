@@ -18,6 +18,8 @@ import CrewList from "../components/Details/CrewList";
 import SimilarList from "../components/Details/SimilarList";
 import Overview from "../components/Details/Overview";
 import { originalImage, poster } from "../utils/imagePath";
+import Spinner from "../components/Spinner/Spinner";
+import "../assets/styles/_common.scss";
 
 function MovieDetails() {
   const { id } = useParams<{ id: string }>();
@@ -58,7 +60,6 @@ function MovieDetails() {
     fetchMoviedetails();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
   if (!movieDetails) return <p>Movie not found.</p>;
 
   const releaseDate = (releaseDate: string) => releaseDate.slice(0, 4);
@@ -91,23 +92,39 @@ function MovieDetails() {
     : null;
 
   return (
-    <div>
-      <div>
-        <img src={backdropURL || ""} alt={movieDetails.title} />
-        <div>
-          <div>
-            <img src={posterURL || ""} alt={movieDetails.title} />
-          </div>
-          <div>
-            <h1>{movieDetails.title}</h1>
-            <p>{voteAverage(movieDetails.vote_average)}</p>
-            <p>{releaseDate(movieDetails.release_date)}</p>
-            <p>{runtime(movieDetails.runtime)}</p>
-            <p>{movieDetails.genres.map((genre) => genre.name).join(" ")}</p>
+    <div className="media-details">
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div
+          className="media-hero"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(${backdropURL})`,
+          }}
+        >
+          <div className="hero-content">
+            <div className="media-poster">
+              <img src={posterURL || ""} alt={movieDetails.title} />
+            </div>
+            <div className="media-info">
+              <h1>{movieDetails.title}</h1>
+              <div className="details">
+                <p className="rating">
+                  {voteAverage(movieDetails.vote_average)}
+                </p>
+                <p>{releaseDate(movieDetails.release_date)}</p>
+                <p>{runtime(movieDetails.runtime)}</p>
+              </div>
+              <div className="media-genres">
+                {movieDetails.genres.map((genre) => (
+                  <span key={genre.id}>{genre.name}</span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div>
+      )}
+      <div className="media-content">
         <Overview overview={movieDetails.overview} />
         <CastList cast={cast} />
         <CrewList crew={crew} />

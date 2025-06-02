@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import type { Movie, TV } from "../../types/interfaces";
-import { poster } from "../../utils/imagePath";
+import { profile } from "../../utils/imagePath";
 
 interface SimilarListProps {
   items: (Movie | TV)[];
@@ -9,14 +9,15 @@ interface SimilarListProps {
 
 function SimilarList({ items, type }: SimilarListProps) {
   return (
-    <div>
+    <section className="media-section similar">
       <h2>MORE LIKE THIS</h2>
-      <div>
+      <div className="media-list scroll similar">
         {items.length > 0 ? (
           items.map((media) => (
             <Link to={`/${type}/${media.id}`} key={media.id}>
               <img
-                src={media.poster_path ? `${poster}${media.poster_path}` : ""}
+                className="similar-images"
+                src={media.poster_path ? `${profile}${media.poster_path}` : ""}
                 alt={"title" in media ? media.title : media.name}
               />
             </Link>
@@ -25,7 +26,7 @@ function SimilarList({ items, type }: SimilarListProps) {
           <p>No related content found</p>
         )}
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  getTvByGenres,
+  getTVByGenres,
   getTVDetails,
   getTVCredits,
   getTVImages,
@@ -19,6 +19,7 @@ import CrewList from "../components/Details/CrewList";
 import SimilarList from "../components/Details/SimilarList";
 import Overview from "../components/Details/Overview";
 import { originalImage, poster } from "../utils/imagePath";
+import Spinner from "../components/Spinner/Spinner";
 
 function TvDetails() {
   const { id } = useParams<{ id: string }>();
@@ -47,7 +48,7 @@ function TvDetails() {
 
         const genreIds = details.genres.map((genre: Genre) => genre.id);
         if (genreIds.length > 0) {
-          const related = await getTvByGenres(genreIds);
+          const related = await getTVByGenres(genreIds);
           setRelatedTVShows(related.results);
         }
       } catch (error) {
@@ -59,7 +60,6 @@ function TvDetails() {
     fetchTvDetails();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
   if (!tvDetails) return <p>Tv show not found.</p>;
 
   const firstAirDate = (date: string) => date.slice(0, 4);
@@ -85,23 +85,37 @@ function TvDetails() {
     : null;
 
   return (
-    <div>
-      <img src={backdropURL || ""} alt={tvDetails.name} />
-
-      <div>
-        <img src={posterURL || ""} alt={tvDetails.name} />
-
-        <div>
-          <h1>{tvDetails.name}</h1>
-          <p>{voteAverage(tvDetails.vote_average)}</p>
-          <p>
-            {firstAirDate(tvDetails.first_air_date)}{" "}
-            {tvDetails.number_of_seasons} Seasons
-          </p>
-          <p>{tvDetails.genres.map((genre) => genre.name).join(" ")}</p>
+    <div className="media-details">
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div
+          className="media-hero"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(${backdropURL})`,
+          }}
+        >
+          <div className="hero-content">
+            <div className="media-poster">
+              <img src={posterURL || ""} alt={tvDetails.name} />
+            </div>
+            <div className="media-info">
+              <h1>{tvDetails.name}</h1>
+              <div className="details">
+                <p className="rating">{voteAverage(tvDetails.vote_average)}</p>
+                <p>{firstAirDate(tvDetails.first_air_date)} </p>
+                <p>{tvDetails.number_of_seasons} Seasons</p>
+              </div>
+              <div className="media-genres">
+                {tvDetails.genres.map((genre) => (
+                  <span key={genre.id}>{genre.name}</span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div>
+      )}
+      <div className="media-content">
         <Overview overview={tvDetails.overview} />
         <CastList cast={cast} />
         <CrewList crew={crew} />

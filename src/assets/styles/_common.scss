@@ -15,7 +15,7 @@ a {
   background-color: $bg-card;
   min-width: 200px;
   height: 100%;
-  border-radius: 10px;
+  border-radius: $border-radius-image;
   cursor: pointer;
   padding: 1rem;
   overflow: hidden;
@@ -33,7 +33,7 @@ a {
     width: 100%;
     aspect-ratio: 2/3;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: $border-radius-image;
     display: block;
   }
 
@@ -87,7 +87,11 @@ a {
 
 .media-section {
   margin: 0 40px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
+  &.similar {
+    margin: 40px 0;
+    padding: 0;
+  }
 
   .media-section-title {
     font-size: $font-size-base;
@@ -109,8 +113,16 @@ a {
       padding: 0 20px;
       overflow-x: auto;
       overflow-y: hidden;
+      &.similar {
+        margin: 0;
+        padding: 20px;
+      }
     }
   }
+}
+.similar-images {
+  border-radius: $border-radius-image;
+  height: 100%;
 }
 
 .spinner-container {
@@ -141,5 +153,145 @@ a {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.media-details {
+  margin-top: 1.5rem;
+
+  .media-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    @media (max-width: 768px) {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      position: relative;
+      max-width: 1400px;
+      gap: 40px;
+      align-items: flex-start;
+      padding: 40px;
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .media-poster {
+        width: clamp(200px, 30vw, 400px);
+        transition: all 0.6s ease;
+        box-shadow: 0 10px 20px #00000080;
+        img {
+          width: 100%;
+          display: block;
+          border-radius: $border-radius-image;
+        }
+      }
+      .media-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 20px;
+        gap: 20px;
+        transition: all 0.5s ease;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        font-weight: $font-weight-semibold;
+
+        @media (max-width: 768px) {
+          align-items: center;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        .rating {
+          color: $star-gold;
+        }
+      }
+      .details {
+        display: flex;
+        gap: 20px;
+      }
+      .media-genres {
+        display: flex;
+        gap: 10px;
+        span {
+          background: #fff3;
+          padding: 5px 15px;
+          border-radius: 20px;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+  .media-content {
+    padding: 2.5rem;
+    .overview {
+      margin-bottom: 40px;
+      h2 {
+        margin-bottom: 20px;
+      }
+      p {
+        line-height: 1.6;
+      }
+    }
+    .cast-section {
+      margin-top: 2rem;
+      h2 {
+        margin-bottom: 20px;
+      }
+      .cast-list {
+        display: flex;
+        overflow-x: auto;
+        gap: 20px;
+        padding-bottom: 40px;
+        scroll-snap-type: x mandatory;
+      }
+      .cast-card {
+        width: 150px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        align-items: center;
+        gap: 8px;
+        .cast-photo {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          background: #56525269;
+          overflow: hidden;
+          img {
+            max-width: 100%;
+          }
+        }
+        .cast-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 8px;
+          .cast-name {
+            font-weight: $font-weight-bold;
+            min-height: 2.5rem;
+            font-size: $font-size-sm;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+          }
+
+          .cast-character {
+            color: #ffffff9d;
+            font-weight: $font-weight-semibold;
+            font-size: $font-size-sm;
+          }
+        }
+      }
+    }
   }
 }
