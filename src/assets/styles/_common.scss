@@ -105,6 +105,14 @@ a {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 20px;
+      @media (max-width: 499px) {
+        display: flex;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 0 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
     }
     &.scroll {
       display: flex;
@@ -113,6 +121,7 @@ a {
       padding: 0 20px;
       overflow-x: auto;
       overflow-y: hidden;
+
       &.similar {
         margin: 0;
         padding: 20px;
