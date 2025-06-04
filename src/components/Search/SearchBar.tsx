@@ -3,23 +3,23 @@ import "./SearchBar.scss";
 import React, { useState } from "react";
 
 interface SearchBarProps {
-onSearch: (query: string)=> void;
-
+  onSearch: (query: string) => void;
 }
-function SearchBar({onSearch}: SearchBarProps) {
+function SearchBar({ onSearch }: SearchBarProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [query, setQuery] = useState("");
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-     
-        setQuery(event.target.value);
-    };
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  };
 
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.key === "Enter" && query.trim() !== ""){
-            onSearch(query.trim());
-        }
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter" && query.trim() !== "") {
+      onSearch(query.trim());
+      setQuery("");
+      setIsExpanded(false);
     }
+  };
 
   return (
     <div
