@@ -23,6 +23,11 @@ import "../assets/styles/_common.scss";
 
 function MovieDetails() {
   const { id } = useParams<{ id: string }>();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [id]);
+
   const [movieDetails, setMovieDetails] = useState<Movie | null>(null);
   const [cast, setCast] = useState<CastMember[]>([]);
   const [crew, setCrew] = useState<CrewMember[]>([]);

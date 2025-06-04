@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import type { MovieList, Movie } from "../types/interfaces";
+import type { MovieList, Movie, SearchResult } from "../types/interfaces";
 
 const API_KEY = import.meta.env.VITE_REACT_APP_TMDB_API_KEY;
 const BASE_URL = import.meta.env.VITE_REACT_APP_TMDB_BASE_URL;
@@ -75,10 +75,16 @@ export const getTVImages = async (tvId: string) => {
 
 export const getMoviesByGenres = async (genreIds: number[]) => {
   const genre = genreIds.join(" ");
-  return fetchData(`discover/movie?with_genres=${genre}&language=en-US&page=1`);
+  return fetchData(`discover/movie?with_genres=${genre}`);
 };
 
 export const getTVByGenres = async (genreIds: number[]) => {
   const genre = genreIds.join(" ");
-  return fetchData(`discover/tv?with_genres=${genre}&language=en-US&page=1`);
+  return fetchData(`discover/tv?with_genres=${genre}`);
+};
+
+export const searchMulti = async (query: string) => {
+  return fetchData("search/multi", { query }) as Promise<{
+    results: SearchResult[];
+  }>;
 };

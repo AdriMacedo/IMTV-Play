@@ -1,4 +1,3 @@
-
 export interface Genre {
   id: number;
   name: string;
@@ -14,7 +13,7 @@ export interface Media {
   overview: string;
 }
 
-export interface Movie extends Media{
+export interface Movie extends Media {
   title: string;
   release_date: string;
   runtime: number;
@@ -46,8 +45,17 @@ export interface TV extends Media {
   number_of_seasons: number;
 }
 
-
 export interface MediaImages {
-  backdrops : {file_path: string} [];
-  posters: {file_path: string} [];
+  backdrops: { file_path: string }[];
+  posters: { file_path: string }[];
 }
+
+export interface SearchResultMovie extends Movie {
+  media_type: "movie";
+}
+
+export interface SearchResultTV extends TV {
+  media_type: "tv";
+}
+
+export type SearchResult = SearchResultMovie | SearchResultTV;

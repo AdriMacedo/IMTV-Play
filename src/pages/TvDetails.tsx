@@ -23,6 +23,11 @@ import Spinner from "../components/Spinner/Spinner";
 
 function TvDetails() {
   const { id } = useParams<{ id: string }>();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [id]);
+
   const [tvDetails, setTvDetails] = useState<TV | null>(null);
   const [cast, setCast] = useState<CastMember[]>([]);
   const [crew, setCrew] = useState<CrewMember[]>([]);
