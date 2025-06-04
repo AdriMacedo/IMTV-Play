@@ -31,7 +31,7 @@ function Tv() {
         setOnTheAirTv(onTheAirTv.results);
         setAiringToday(airingToday.results);
       } catch (error) {
-        console.log("Erro ao carregar tvshows:", error);
+        console.log("Erro ao carregar series:", error);
       } finally {
         setLoadingPopular(false);
         setLoadingTopRated(false);
@@ -44,10 +44,30 @@ function Tv() {
 
   return (
     <div className="main-content">
-      <TVSection title={"POPULAR"} tv={popularTv} className={"grid"} loading={loadingPopular} />
-      <TVSection title={"TOP RATED"} tv={topRatedTv} className={"scroll"} loading={loadingTopRated} />
-      <TVSection title={"ON THE AIR"} tv={onTheAirTv} className={"scroll"} loading={loadingOnTheAir} />
-      <TVSection title={"AIRING TODAY"} tv={airingToday} className={"scroll"} loading={loadingAiringToday} />
+      <TVSection
+        title={"POPULAR"}
+        tv={popularTv}
+        className={"grid"}
+        loading={loadingPopular}
+      />
+      <TVSection
+        title={"TOP RATED"}
+        tv={topRatedTv}
+        className={"scroll"}
+        loading={loadingTopRated}
+      />
+      <TVSection
+        title={"ON THE AIR"}
+        tv={onTheAirTv}
+        className={"scroll"}
+        loading={loadingOnTheAir}
+      />
+      <TVSection
+        title={"AIRING TODAY"}
+        tv={airingToday}
+        className={"scroll"}
+        loading={loadingAiringToday}
+      />
     </div>
   );
 }

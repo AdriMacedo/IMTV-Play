@@ -7,10 +7,9 @@ function NavBar() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleSearch = (query: string)=>{ {
-      navigate(`/search?q=${encodeURIComponent(query.trim())}`);
-    }
-  }
+  const handleSearch = (query: string) => {
+    navigate(`/search?q=${encodeURIComponent(query.trim())}`);
+  };
 
   return (
     <nav className="navbar__container">

@@ -22,9 +22,8 @@ function CastList({ cast }: CastListProps) {
                 />
               </div>
               <div className="cast-info">
-
-              <h4 className="cast-name">{actor.name}</h4>
-              <p className="cast-character">{actor.character}</p>
+                <h4 className="cast-name">{actor.name}</h4>
+                <p className="cast-character">{actor.character}</p>
               </div>
             </div>
           ))

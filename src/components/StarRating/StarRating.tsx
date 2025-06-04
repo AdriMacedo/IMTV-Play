@@ -14,19 +14,23 @@ function StarRating({ voteAverage }: StarRatingProps) {
         .repeat(fullStars)
         .split("")
         .map((star, index) => (
-          <span key={index} className="gold">{star}</span>
+          <span key={index} className="gold">
+            {star}
+          </span>
         ))}
       {halfStar && (
-      <span className="half-star">
-        <span className="gold">★</span>
-        <span className="gray">★</span>
-    </span>
+        <span className="half-star">
+          <span className="gold">★</span>
+          <span className="gray">★</span>
+        </span>
       )}
       {"★"
         .repeat(emptyStars)
         .split("")
         .map((star, index) => (
-          <span key={index} className="gray">{star}</span>
+          <span key={index} className="gray">
+            {star}
+          </span>
         ))}
     </div>
   );

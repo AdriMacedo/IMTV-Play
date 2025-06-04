@@ -20,7 +20,7 @@ function MovieSection({
     <section className="media-section">
       <h2 className="media-section-title">{title}</h2>
       {loading ? (
-      <Spinner />
+        <Spinner />
       ) : (
         <div className={`media-list ${className}`}>
           {movies.map((movie) => (

@@ -45,10 +45,30 @@ function Movies() {
 
   return (
     <div className="main-content">
-      <MovieSection title={"POPULAR MOVIES"} movies={popularMovies} className={"grid"} loading={loadingPopular} />
-      <MovieSection title={"TOP RATED"} movies={topRatedMovies} className={"scroll"} loading={loadingTopRated} />
-      <MovieSection title={"NOW PLAYING"} movies={nowplayingMovies} className={"scroll"} loading={loadingNowPlaying} />
-      <MovieSection title={"UP COMING"} movies={upcomingMovies} className={"scroll"} loading={loadingUpcoming} />
+      <MovieSection
+        title={"POPULAR MOVIES"}
+        movies={popularMovies}
+        className={"grid"}
+        loading={loadingPopular}
+      />
+      <MovieSection
+        title={"TOP RATED"}
+        movies={topRatedMovies}
+        className={"scroll"}
+        loading={loadingTopRated}
+      />
+      <MovieSection
+        title={"NOW PLAYING"}
+        movies={nowplayingMovies}
+        className={"scroll"}
+        loading={loadingNowPlaying}
+      />
+      <MovieSection
+        title={"UP COMING"}
+        movies={upcomingMovies}
+        className={"scroll"}
+        loading={loadingUpcoming}
+      />
     </div>
   );
 }

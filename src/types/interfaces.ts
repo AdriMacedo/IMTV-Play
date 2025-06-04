@@ -8,7 +8,6 @@ export interface Media {
   poster_path: string | null;
   backdrop_path: string | null;
   vote_average: number;
-
   genres: Genre[];
   overview: string;
 }
