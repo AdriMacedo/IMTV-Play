@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import type { Movie, TV } from "../../types/interfaces";
 import { profile } from "../../utils/imagePath";
+import "../../assets/styles/_common.scss";
 
 interface SimilarListProps {
   items: (Movie | TV)[];

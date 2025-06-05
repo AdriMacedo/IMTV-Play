@@ -26,11 +26,12 @@ function SearchBar({ onSearch }: SearchBarProps) {
       className={`search-container ${isExpanded ? "expanded" : ""}`}
       onFocus={() => setIsExpanded(true)}
     >
-      <span className="search-icon">🔍</span>
+      <span className="search-icon" aria-label="search bar">🔍</span>
       <input
         type="text"
         placeholder="Search ..."
         className="search-input"
+        aria-label="search movies/series"
         value={query}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}

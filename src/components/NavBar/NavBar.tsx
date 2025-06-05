@@ -13,7 +13,7 @@ function NavBar() {
 
   return (
     <nav className="navbar__container">
-      <div className="home">
+      <div className="home" aria-label="home button">
         <Link to="/">
           <Button variant={"home"}>IMTV</Button>
         </Link>

@@ -17,10 +17,14 @@ function TVSection({ title, tv, className, loading = false }: TVSectionProps) {
       {loading ? (
         <Spinner />
       ) : (
-        <div className={`media-list ${className}`}>
-          {tv.map((tv) => (
-            <TVCard key={tv.id} tv={tv} />
-          ))}
+        <div className="media-wrapper">
+          <span className="scroll-indicator left">❮</span>
+          <div className={`media-list ${className}`}>
+            {tv.map((tv) => (
+              <TVCard key={tv.id} tv={tv} />
+            ))}
+          </div>
+          <span className="scroll-indicator right">❯</span>
         </div>
       )}
     </section>

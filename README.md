@@ -1,54 +1,42 @@
-# React + TypeScript + Vite
+# IMTV-PLAY
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+é uma app web para buscar e visualizar filmes e series, utilizando a API do TMDB para fornecer detalhes completos de cada titulo.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- pesquisa multi (filmes e series)
+- lista de filmes/series baseados na categoria
+- lista de titulos relacionados
+- visualizacao de detalhes de filmes/series, incluindo imagens, rating, duração, géneros e elenco
+- interface responsiva com suporte a diferentes dispositivos
+  
+## Tecnologias utilizadas
 
-## Expanding the ESLint configuration
+- React 18+
+- React Router DOM
+- TypeScript
+- Axios para requisição HTTP
+- SASS para estilos
+- API TMDB para buscar dados filmes/series
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Estrutura do projecto
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+/public
+  favicon         # icon da app 
+/src
+  /assets/styles  # estilos
+  /components     # componentes reutilizáveis
+  /pages          # páginas principais
+  /services       # chamadas à API
+  /types          # interfaces 
+  /utils          # imagens c/ diferentes tamanhos
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Repositório 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+https://github.com/AdriMacedo/IMTV-Play.git
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Deploy
+
+o projecto está disponivel online:
+
+👉🏼 https://imtv-play.netlify.app/

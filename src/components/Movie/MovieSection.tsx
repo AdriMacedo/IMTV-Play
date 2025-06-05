@@ -22,10 +22,14 @@ function MovieSection({
       {loading ? (
         <Spinner />
       ) : (
-        <div className={`media-list ${className}`}>
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
+        <div className="media-wrapper">
+          <span className={`scroll-indicator left ${className}`}>❮</span>
+          <div className={`media-list ${className}`}>
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
+          <span className={`scroll-indicator right ${className}`}>❯</span>
         </div>
       )}
     </section>
