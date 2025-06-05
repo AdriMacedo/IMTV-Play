@@ -12,6 +12,8 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="footer-github"
+          title="Visit my GitHub"
+          aria-label="Visit my GitHub"
         >
           <img src={githubIcon} alt="GitHub" />
         </a>
