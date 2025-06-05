@@ -7,11 +7,12 @@ interface CastListProps {
 }
 
 function CastList({ cast }: CastListProps) {
+  const hasItems = cast.length > 5;
   return (
     <div className="cast-section">
       <h2>CAST</h2>
       <div className="cast-wrapper">
-      <span className="scroll-indicator left scroll">❮</span>
+        {hasItems && <span className="scroll-indicator left scroll">❮</span>}
         <div className="cast-list">
           {cast.length > 0 ? (
             cast.map((actor) => (
@@ -22,7 +23,7 @@ function CastList({ cast }: CastListProps) {
                       actor.profile_path
                         ? `${profile}${actor.profile_path}`
                         : ""
-                    } alt={actor.name}
+                    }
                   />
                 </div>
                 <div className="cast-info">
@@ -35,7 +36,7 @@ function CastList({ cast }: CastListProps) {
             <p>No cast information available</p>
           )}
         </div>
-        <span className="scroll-indicator right scroll">❯</span>
+        {hasItems && <span className="scroll-indicator right scroll">❯</span>}
       </div>
     </div>
   );

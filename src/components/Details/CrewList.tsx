@@ -5,11 +5,12 @@ interface CrewListProps {
   crew: CrewMember[];
 }
 function CrewList({ crew }: CrewListProps) {
+  const hasItems = crew.length > 5;
   return (
     <div className="cast-section">
       <h2>CREW</h2>
       <div className="cast-wrapper">
-        <span className="scroll-indicator left scroll">❮</span>
+        {hasItems && <span className="scroll-indicator left scroll">❮</span>}
         <div className="cast-list">
           {crew.length > 0 ? (
             crew.map((member) => (
@@ -24,7 +25,7 @@ function CrewList({ crew }: CrewListProps) {
             <p>No crew information available</p>
           )}
         </div>
-        <span className="scroll-indicator right scroll">❯</span>
+        {hasItems && <span className="scroll-indicator right scroll">❯</span>}
       </div>
     </div>
   );

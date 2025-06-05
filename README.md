@@ -9,7 +9,7 @@
 - lista de titulos relacionados
 - visualizacao de detalhes de filmes/series, incluindo imagens, rating, duração, géneros e elenco
 - interface responsiva com suporte a diferentes dispositivos
-  
+
 ## Tecnologias utilizadas
 
 - React 18+
@@ -21,17 +21,19 @@
 
 ## Estrutura do projecto
 
+```
 /public
-  favicon         # icon da app 
+  favicon         # icon da app
 /src
   /assets/styles  # estilos
   /components     # componentes reutilizáveis
   /pages          # páginas principais
   /services       # chamadas à API
-  /types          # interfaces 
+  /types          # interfaces
   /utils          # imagens c/ diferentes tamanhos
+```
 
-## Repositório 
+## Repositório
 
 https://github.com/AdriMacedo/IMTV-Play.git
 
