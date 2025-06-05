@@ -26,7 +26,9 @@ function SearchBar({ onSearch }: SearchBarProps) {
       className={`search-container ${isExpanded ? "expanded" : ""}`}
       onFocus={() => setIsExpanded(true)}
     >
-      <span className="search-icon" aria-label="search bar">🔍</span>
+      <span className="search-icon" aria-label="search bar">
+        🔍
+      </span>
       <input
         type="text"
         placeholder="Search ..."

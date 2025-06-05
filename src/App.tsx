@@ -7,7 +7,7 @@ import TvDetails from "./pages/TvDetails";
 import Tv from "./pages/Tv";
 import "./App.scss";
 import SearchResults from "./pages/SearchResults";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
