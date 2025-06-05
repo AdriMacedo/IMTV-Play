@@ -88,8 +88,24 @@ a {
   margin: 0 40px;
   padding-bottom: 40px;
   &.similar {
-    margin: 40px 0;
-    padding: 0;
+    margin: 0;
+    &.media-list {
+      margin: 40px 0;
+      padding: 0;
+      &.scroll {
+        display: flex;
+        scroll-snap-type: x mandatory;
+        gap: 20px;
+        padding: 0 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        &.similar {
+          margin: 0;
+          padding: 20px;
+        }
+      }
+    }
   }
 
   .media-section-title {
@@ -282,6 +298,29 @@ a {
       h2 {
         margin-bottom: 20px;
       }
+      .cast-wrapper {
+        position: relative;
+        .scroll-indicator {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 3rem;
+          color: rgba(255, 255, 255, 0.3);
+          pointer-events: none; /* não bloqueia o scroll */
+          user-select: none;
+          z-index: 10;
+          display: inline-block; /* aparece sempre, já que .cast-list sempre rola */
+        }
+
+        .scroll-indicator.left {
+          left: 10px;
+        }
+
+        .scroll-indicator.right {
+          right: 10px;
+        }
+      }
+
       .cast-list {
         display: flex;
         overflow-x: auto;

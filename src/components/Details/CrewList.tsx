@@ -8,19 +8,23 @@ function CrewList({ crew }: CrewListProps) {
   return (
     <div className="cast-section">
       <h2>CREW</h2>
-      <div className="cast-list">
-        {crew.length > 0 ? (
-          crew.map((member) => (
-            <div key={member.id} className="cast-card">
-              <div className="cast-info">
-                <h4 className="cast-name">{member.name}</h4>
-                <p className="cast-character">{member.job}</p>
+      <div className="cast-wrapper">
+        <span className="scroll-indicator left scroll">❮</span>
+        <div className="cast-list">
+          {crew.length > 0 ? (
+            crew.map((member) => (
+              <div key={member.id} className="cast-card">
+                <div className="cast-info">
+                  <h4 className="cast-name">{member.name}</h4>
+                  <p className="cast-character">{member.job}</p>
+                </div>
               </div>
-            </div>
-          ))
-        ) : (
-          <p>No crew information available</p>
-        )}
+            ))
+          ) : (
+            <p>No crew information available</p>
+          )}
+        </div>
+        <span className="scroll-indicator right scroll">❯</span>
       </div>
     </div>
   );

@@ -12,20 +12,26 @@ function SimilarList({ items, type }: SimilarListProps) {
   return (
     <section className="media-section similar">
       <h2>MORE LIKE THIS</h2>
-      <div className="media-list scroll similar">
-        {items.length > 0 ? (
-          items.map((media) => (
-            <Link to={`/${type}/${media.id}`} key={media.id}>
-              <img
-                className="similar-images"
-                src={media.poster_path ? `${profile}${media.poster_path}` : ""}
-                alt={"title" in media ? media.title : media.name}
-              />
-            </Link>
-          ))
-        ) : (
-          <p>No related content found</p>
-        )}
+      <div className="media-wrapper">
+        <span className="scroll-indicator left scroll similar">❮</span>
+        <div className="media-list scroll similar">
+          {items.length > 0 ? (
+            items.map((media) => (
+              <Link to={`/${type}/${media.id}`} key={media.id}>
+                <img
+                  className="similar-images"
+                  src={
+                    media.poster_path ? `${profile}${media.poster_path}` : ""
+                  }
+                  alt={"title" in media ? media.title : media.name}
+                />
+              </Link>
+            ))
+          ) : (
+            <p>No related content found</p>
+          )}
+        </div>
+        <span className="scroll-indicator right scroll similar">❯</span>
       </div>
     </section>
   );
