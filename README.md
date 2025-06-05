@@ -23,6 +23,7 @@
 
 ```
 /public
+  githubIcon      # icon github
   favicon         # icon da app
 /src
   /assets/styles  # estilos
