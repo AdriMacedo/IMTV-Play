@@ -31,10 +31,14 @@ a {
 
   img {
     width: 100%;
-    aspect-ratio: 2/3;
+    min-height: 290px;
     object-fit: cover;
     border-radius: $border-radius-image;
     display: block;
+    background: transparent;
+    @media (max-width: 768px) {
+      min-height: 200px;
+    }
   }
 
   .card-title {
@@ -88,24 +92,16 @@ a {
   margin: 0 40px;
   padding-bottom: 40px;
   &.similar {
-    margin: 0;
-    margin-top: 2rem;
-    &.media-list {
-      margin: 40px 0;
-      padding: 0;
-      &.scroll {
-        display: flex;
-        scroll-snap-type: x mandatory;
-        gap: 20px;
-        padding: 0 20px;
-        overflow-x: auto;
-        overflow-y: hidden;
-
-        &.similar {
-          margin: 0;
-          padding: 20px;
-        }
-      }
+    margin: 40px 0;
+    padding: 0;
+    .media-list.scroll.similar {
+      display: flex;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 0 20px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      margin: 20px 0;
     }
   }
 
@@ -135,10 +131,8 @@ a {
       &.scroll {
         display: inline-block;
       }
-      @media (max-width: 499px) {
-        &.grid {
-          display: inline-block;
-        }
+      @media (max-width: 768px) {
+        display: inline-block;
       }
     }
 
@@ -147,14 +141,20 @@ a {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 20px;
+        overflow-x: visible;
 
-        @media (max-width: 499px) {
+        @media (max-width: 768px) {
           display: flex;
           scroll-snap-type: x mandatory;
           gap: 20px;
           padding: 0 20px;
           overflow-x: auto;
           overflow-y: hidden;
+          > * {
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            width: 200px;
+          }
         }
       }
       &.scroll {
@@ -219,7 +219,7 @@ a {
     height: auto;
     display: flex;
     align-items: flex-end;
-    @media (max-width: 768px) {
+    @media (max-width: 499px) {
       justify-content: center;
       align-items: center;
     }
@@ -231,7 +231,7 @@ a {
       gap: 40px;
       align-items: flex-start;
       padding: 40px;
-      @media (max-width: 768px) {
+      @media (max-width: 499px) {
         flex-direction: column;
         align-items: center;
         gap: 0;
@@ -244,6 +244,7 @@ a {
         img {
           width: 100%;
           display: block;
+          width: 100%;
           border-radius: $border-radius-image;
         }
       }
@@ -257,7 +258,7 @@ a {
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         font-weight: $font-weight-semibold;
 
-        @media (max-width: 768px) {
+        @media (max-width: 499px) {
           align-items: center;
         }
         h1 {

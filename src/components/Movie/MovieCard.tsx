@@ -10,7 +10,10 @@ interface MovieCardProps {
 
 function MovieCard({ movie }: MovieCardProps) {
   return (
-    <Link to={`/movie/${movie.id}`} aria-label="click for movie details">
+    <Link
+      to={`/movie/${movie.id}`}
+      aria-label={`View details for ${movie.title}`}
+    >
       <div key={movie.id} className="card">
         <img src={`${poster}${movie.poster_path || ""}`} alt={movie.title} />
         <h3 className="card-title">{movie.title}</h3>

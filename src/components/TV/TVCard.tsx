@@ -10,7 +10,7 @@ interface TVCardProps {
 
 function TVCard({ tv }: TVCardProps) {
   return (
-    <Link to={`/tv/${tv.id}`} aria-label="click for details">
+    <Link to={`/tv/${tv.id}`} aria-label={`View details for ${tv.name}`}>
       <div key={tv.id} className="card">
         <img src={`${poster}${tv.poster_path || ""}`} alt={tv.name} />
         <h3 className="card-title">{tv.name}</h3>

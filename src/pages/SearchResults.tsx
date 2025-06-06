@@ -5,6 +5,7 @@ import MovieCard from "../components/Movie/MovieCard";
 import TVCard from "../components/TV/TVCard";
 import type { SearchResult, Movie, TV } from "../types/interfaces";
 import Spinner from "../components/Spinner/Spinner";
+import "../assets/styles/_common.scss";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -42,24 +43,33 @@ function SearchResults() {
         <>
           <div className="media-section">
             <h2 className="media-section-title">Movies results: "{query}"</h2>
-            <div className="media-list grid">
-              {movies.length > 0 ? (
-                movies.map((movie) => (
-                  <MovieCard key={movie.id} movie={movie} />
-                ))
-              ) : (
-                <p>No Movies found</p>
-              )}
+
+            <div className="media-wrapper">
+              <span className="scroll-indicator left">❮</span>
+              <div className="media-list grid">
+                {movies.length > 0 ? (
+                  movies.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie} />
+                  ))
+                ) : (
+                  <p>No Movie found.</p>
+                )}
+              </div>
+              <span className="scroll-indicator right">❯</span>
             </div>
           </div>
           <div className="media-section">
             <h2 className="media-section-title">Series results: "{query}"</h2>
-            <div className="media-list grid">
-              {series.length > 0 ? (
-                series.map((tv) => <TVCard key={tv.id} tv={tv} />)
-              ) : (
-                <p>No Series found</p>
-              )}
+            <div className="media-wrapper">
+              <span className="scroll-indicator left">❮</span>
+              <div className="media-list grid">
+                {series.length > 0 ? (
+                  series.map((tv) => <TVCard key={tv.id} tv={tv} />)
+                ) : (
+                  <p>No Serie found.</p>
+                )}
+              </div>
+              <span className="scroll-indicator right">❯</span>
             </div>
           </div>
         </>
@@ -67,5 +77,4 @@ function SearchResults() {
     </div>
   );
 }
-
 export default SearchResults;
