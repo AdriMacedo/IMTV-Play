@@ -9,11 +9,12 @@ interface SimilarListProps {
 }
 
 function SimilarList({ items, type }: SimilarListProps) {
+  const hasItems = items.length > 5;
   return (
     <section className="media-section similar">
       <h2>MORE LIKE THIS</h2>
       <div className="media-wrapper">
-        <span className="scroll-indicator left scroll similar">❮</span>
+        {hasItems && <span className="scroll-indicator left">❮</span>}
         <div className="media-list scroll similar">
           {items.length > 0 ? (
             items.map((media) => (
@@ -31,7 +32,7 @@ function SimilarList({ items, type }: SimilarListProps) {
             <p>No related content found</p>
           )}
         </div>
-        <span className="scroll-indicator right scroll similar">❯</span>
+        {hasItems && <span className="scroll-indicator right">❯</span>}{" "}
       </div>
     </section>
   );
